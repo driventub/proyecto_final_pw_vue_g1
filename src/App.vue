@@ -1,16 +1,20 @@
 <template>
   <router-view></router-view>
   <NavBar />
+  <h2>Condor</h2>
+  <registro-ciente />
+  <h2>condor</h2>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import NavBar from './components/NavBar.vue';
+import RegistroCiente from './components/RegistroCiente.vue';
 
 export default {
   name: 'App',
   components: {
-    NavBar
+    NavBar,
+    RegistroCiente
   }
 }
 </script>
