@@ -10,7 +10,7 @@
 <script>
 import ActualizarCliente from './components/ActualizaCliente.vue';
 import NavBar from './components/NavBar.vue';
-import RegistroCiente from './components/RegistroCiente.vue';
+import RegistroCiente from './components/RegistroCliente.vue';
 
 export default {
   name: 'App',
