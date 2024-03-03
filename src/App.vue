@@ -4,17 +4,30 @@
   <h2>Condor</h2>
   <registro-ciente />
   <h2>condor</h2>
+  <img alt="Vue logo" src="./assets/logo.png">
+  <VehiculoReservar2 />
 </template>
 
 <script>
 import NavBar from './components/NavBar.vue';
 import RegistroCiente from './components/RegistroCiente.vue';
+import HelloWorld from './components/HelloWorld.vue'
+import VehiculoConsultar from './pages/VehiculoConsultar.vue'
+import RegistroCliente from './pages/RegistroCliente.vue'
+import FormularioCliente from './components/FormularioCliente.vue'
+import ReservaVehiculo from './components/ReservaVehiculo.vue'
+import VehiculoReservar2 from './components/VehiculoReservar2.vue'
 
 export default {
   name: 'App',
   components: {
     NavBar,
-    RegistroCiente
+    RegistroCiente,
+    VehiculoConsultar,
+    RegistroCliente,
+    FormularioCliente,
+    ReservaVehiculo,
+    VehiculoReservar2
   }
 }
 </script>
