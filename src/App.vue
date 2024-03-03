@@ -1,15 +1,24 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <VehiculoReservar2 />
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import VehiculoConsultar from './pages/VehiculoConsultar.vue'
+import RegistroCliente from './pages/RegistroCliente.vue'
+import FormularioCliente from './components/FormularioCliente.vue'
+import ReservaVehiculo from './components/ReservaVehiculo.vue'
+import VehiculoReservar2 from './components/VehiculoReservar2.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    VehiculoConsultar,
+    RegistroCliente,
+    FormularioCliente,
+    ReservaVehiculo,
+    VehiculoReservar2
   }
 }
 </script>
