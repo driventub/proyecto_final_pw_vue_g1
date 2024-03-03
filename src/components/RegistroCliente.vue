@@ -4,7 +4,7 @@
         <h2>ÚNASE A AVIS PREFERRED®</h2>
         <span>Configuremos su cuenta personal.</span>
     </div>
-    <div class="hypervinculos">
+    <div class="hypervinculos" style="display: flex;">
         <a href="">¿YA TIENE UN NÚMERO DE WIZARD DE AVIS DE 6 DÍGITOS? START HERE.</a>
         <a href="">¿Qué es un número de Wizard?</a>
     </div>
