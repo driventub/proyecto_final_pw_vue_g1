@@ -23,4 +23,11 @@ export default {
   color: #2c3e50;
 
 }
+
+.contenedor{
+  margin: 10px 300px;
+  border: solid 3px black;
+  border-radius: 10px;
+  padding: 30px;
+}
 </style>

@@ -1,73 +1,123 @@
 <template>
     <div>
-        <h2>Reservar Vehículo</h2>
-        <form @submit.prevent="reservarVehiculo">
-            <div>
-                <label for="placa">Placa del Vehículo:</label>
-                <input type="text" id="placa" v-model="placa" required>
+        <div id="divpag">
+            <fieldset>
+                <legend>Reservar vehículo</legend>
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="idPlaca">Placa del vehículo:
+                    </span>
+                    <input type="text" class="form-control" aria-describedby="addon-wrapping" v-model="placa" />
+                </div>
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="idCedula">Cédula:</span>
+                    <input type="text" class="form-control" aria-describedby="addon-wrapping" v-model="cedula" />
+                </div>
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="idFechaI">Fecha inicio:</span>
+                    <input type="datetime-local" class="form-control" aria-describedby="addon-wrapping"
+                        v-model="fechaInicio" />
+                </div>
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="idFechaF">Fecha final:</span>
+                    <input type="datetime-local" class="form-control" aria-describedby="addon-wrapping"
+                        v-model="fechaFinal" />
+                </div>
+            </fieldset>
+            <br />
+            <button @click="buscar" class="btn btn-outline-info">BUSCAR</button>
+            <div v-if="mostrarD" class="alert alert-primary" role="alert">
+                {{ texto }}
             </div>
-            <div>
-                <label for="cedula">Cédula del Cliente:</label>
-                <input type="text" id="cedula" v-model="cedula" required>
+
+            <div v-if="mostrarT" class="input-group flex-nowrap">
+                <span class="input-group-text" id="idTarjeta">Tarjeta de credito:</span>
+                <input type="text" class="form-control" aria-describedby="addon-wrapping" v-model="tarjeta" />
             </div>
-            <div>
-                <label for="fechaInicio">Fecha de Inicio:</label>
-                <input type="date" id="fechaInicio" v-model="fechaInicio" required>
+            <br />
+
+            <button @click="reservar" class="btn btn-outline-info">RESERVAR</button>
+            <div v-if="mostrarR" class="alert alert-primary" role="alert">
+                {{ texto2 }}
             </div>
-            <div>
-                <label for="fechaFin">Fecha de Fin:</label>
-                <input type="date" id="fechaFin" v-model="fechaFin" required>
-            </div>
-            <div v-if="mostrarPago">
-                <label for="numeroTarjeta">Número de Tarjeta de Crédito:</label>
-                <input type="text" id="numeroTarjeta" v-model="numeroTarjeta" required>
-            </div>
-            <button type="submit">Reservar</button>
-        </form>
-        <p v-if="mensajeReserva">{{ mensajeReserva }}</p>
+        </div>
     </div>
 </template>
 
 <script>
-import { reservarVehiculoFachada } from "../helpers/clienteCliente"
-
+import NavarCliente from "../components/NavBar.vue";
+import { busquedaVehiculoFecha, reservarVehiculo } from "../helpers/clienteCliente";
 export default {
+    components: {
+        NavarCliente,
+    },
     data() {
         return {
-            placa: '',
-            cedula: '',
-            fechaInicio: '',
-            fechaFin: '',
-            numeroTarjeta: '',
-            mensajeReserva: ''
+            placa: null,
+            cedula: null,
+            fechaInicio: null,
+            fechaFinal: null,
+            tarjeta: null,
+            mostrarD: false,
+            mostrarR: false,
+            texto: null,
+            texto2: null,
+            mostrarT: null
         };
     },
     methods: {
-        async reservarVehiculo() {
+        async buscar() {
+            this.texto = await busquedaVehiculoFecha(
+                this.placa,
+                this.fechaInicio,
+                this.fechaFinal
+            );
+            if (this.texto.includes('no está disponible')) {
+                this.mostrarD = true;
 
-            const fechaInicioDate = new Date(this.fechaInicio);
-            const fechaFinDate = new Date(this.fechaFin);
-
-            const fechaInicioFormatted = `${fechaInicioDate.getFullYear()}-${('0' + (fechaInicioDate.getMonth() + 1)).slice(-2)}-${('0' + fechaInicioDate.getDate()).slice(-2)}T${('0' + fechaInicioDate.getHours()).slice(-2)}:${('0' + fechaInicioDate.getMinutes()).slice(-2)}:${('0' + fechaInicioDate.getSeconds()).slice(-2)}`;
-            const fechaFinFormatted = `${fechaFinDate.getFullYear()}-${('0' + (fechaFinDate.getMonth() + 1)).slice(-2)}-${('0' + fechaFinDate.getDate()).slice(-2)}T${('0' + fechaFinDate.getHours()).slice(-2)}:${('0' + fechaFinDate.getMinutes()).slice(-2)}:${('0' + fechaFinDate.getSeconds()).slice(-2)}`;
-
-
-            const reserva = {
-                placa: this.placa,
-                ciCliente: this.cedula,
-                fechaInicio: fechaInicioFormatted,
-                fechaFin: fechaFinFormatted,
-                numeroTarjeta: this.numeroTarjeta
-            };
-
-            try {
-                const mensaje = await reservarVehiculoFachada(reserva);
-                this.mensajeReserva = mensaje;
-            } catch (error) {
-                console.error("Error al reservar vehículo:", error);
-                this.mensajeReserva = "Error al realizar la reserva. Por favor, inténtelo de nuevo más tarde.";
+                this.mostrarR = false;
+            } else {
+                this.mostrarD = true;
+                this.mostrarT = true;
+                this.mostrarR = false;
             }
-        }
-    }
+
+        },
+        async reservar() {
+            const reser = {
+                placa: this.placa,
+                fechaInicio: this.fechaInicio,
+                fechaFin: this.fechaFinal,
+                ciCliente: this.cedula,
+                numeroTarjeta: this.tarjeta
+            }
+            console.log(this.fechaInicio);
+            console.log(this.fechaFinal);
+            this.texto2 = await reservarVehiculo(reser);
+            this.mostrarR = true;
+            this.mostrarD = false;
+        },
+    },
 };
 </script>
+
+<style>
+#divpag {
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+}
+
+input {
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+span {
+    margin-top: 10px;
+}
+
+button {
+    margin: 10px;
+}
+</style>

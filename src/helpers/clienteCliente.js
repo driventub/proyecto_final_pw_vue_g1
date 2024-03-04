@@ -27,9 +27,6 @@ export const actualizarFachadaCliente = async (body) => {
 }
 
 
-
-
-
 export const verClientes = async () => {
     
         const response = await axios.get("http://localhost:8080/api/v1.0/Renta/clientes");
@@ -89,3 +86,24 @@ export const reservarVehiculoFachada = async (reserva) => {
         throw error; 
     }
 };
+
+export const busquedaVehiculoFecha = async (placa,fechaInicio,fechaFin) => {
+    //return await obtenerEmpleadoAPI(id);
+    return await busquedaVehiculoFechaAxios(placa,fechaInicio,fechaFin);
+}
+const busquedaVehiculoFechaAxios=async(placa,fechaInicio,fechaFin)=>{
+    const data = axios.get(`http://localhost:8080/api/v1.0/Renta/vehiculos/busqueda?placa=${placa}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`).then(r => r.data)
+    console.log(data)
+    return data
+}
+
+export const reservarVehiculo = async (reser) => {
+    //return await obtenerEmpleadoAPI(id);
+    return await reservarVehiculoAxios(reser);
+}
+
+const reservarVehiculoAxios=async(reser)=>{
+    const data = axios.post(`http://localhost:8080/api/v1.0/Renta/vehiculos/reserva`,reser).then(r => r.data)
+    console.log(data)
+    return data
+}

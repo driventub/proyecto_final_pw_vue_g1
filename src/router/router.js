@@ -11,11 +11,11 @@ const routes = [
     // },
 
     {
-        path: '/clientes/buscarEmpleados',
+        path: '/empleados/administrarCliente',
         component: ( )=> import ('../components/FormularioCliente.vue')
     },
     {
-        path: '/clientes/buscarVehiculos',
+        path: '/empleados/administrarVehiculo',
         component: ( )=> import ('../components/FormularioVehiculo.vue')
     },
 
