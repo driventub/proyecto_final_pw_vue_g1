@@ -7,7 +7,7 @@ const routes = [
 
     {
          path: '/clientes/buscarVehiculos',
-         component: ()=> import ('@/pages/ClientePage.vue')
+         component: ()=> import ('@/pages/BuscarVehiculoPage.vue')
      },
 
      {

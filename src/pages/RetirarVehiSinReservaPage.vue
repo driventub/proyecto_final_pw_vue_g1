@@ -12,7 +12,7 @@
 
 <script>
 
-import ConsultarVehiculo from '../pages/ClientePage.vue'
+import ConsultarVehiculo from './BuscarVehiculoPage.vue'
 export default {
 
     components:{
