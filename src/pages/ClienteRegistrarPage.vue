@@ -1,6 +1,6 @@
 <template>
 <div class="contenedor">
-   <registro-cliente/> 
+   <RegistroCliente/> 
 </div>
   
 </template>

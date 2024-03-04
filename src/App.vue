@@ -1,23 +1,15 @@
 <template>
-  <router-view></router-view>
   <NavBar />
-  <h2>Condor</h2>
-  <registro-ciente />
-  <ActualizarCliente />
-  <h2>condor</h2>
+  <router-view></router-view>
 </template>
 
 <script>
-import ActualizarCliente from './components/ActualizaCliente.vue';
 import NavBar from './components/NavBar.vue';
-import RegistroCiente from './components/RegistroCliente.vue';
 
 export default {
   name: 'App',
   components: {
     NavBar,
-    RegistroCiente,
-    ActualizarCliente
   }
 }
 </script>

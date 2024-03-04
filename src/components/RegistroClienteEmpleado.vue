@@ -1,13 +1,7 @@
 <template>
   <div class="contenedor">
     <div class="titulo">
-        <legend>ÚNASE A AVIS PREFERRED®</legend>
-        <spam>Configuremos su cuenta personal.</spam>
-    </div>
-    <div class="hypervinculos">
-        <div><a href="">¿YA TIENE UN NÚMERO DE WIZARD DE AVIS DE 6 DÍGITOS? START HERE.</a></div>
-        
-        <div><a href="">¿Qué es un número de Wizard?</a></div>
+        <h2>Ingresar un Cliente.</h2>
     </div>
     <form class="formulario" @submit.prevent="registrarCliente">
         <div class="mb-3">
@@ -52,20 +46,15 @@ export default {
                 apellido: null,
                 fechaNacimiento: null,
                 genero: null,
-                tipoRegistro:"C"
+                tipoRegistro:"E"
             }
         };
     },
     methods: {
         async registrarCliente() {
             this.cliente.fechaNacimiento = new Date(this.cliente.fechaNacimiento);
-            var msj = "Error al ingresar el Cliente:... "
-            try {
-                msj = await insertarFachada(this.cliente); 
+                var msj = await insertarFachada(this.cliente); 
                 alert(msj);
-            } catch (error) {
-                alert(msj);
-            }
         }
     }
     

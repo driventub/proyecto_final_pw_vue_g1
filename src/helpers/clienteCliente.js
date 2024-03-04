@@ -1,22 +1,27 @@
 import axios from "axios";
 
 
-const insertarCliente = (body) => {
-
-    axios.post("http://localhost:8080/api/v1.0/Renta/clientes", body).then(r => r.data);
-    console.log(body)
+const insertarCliente = async (body) => {
+    return axios.post("http://localhost:8080/api/v1.0/Renta/clientes", body).then(r => r.data);
 }
 
-const actualizarCliente = (cedula, body) => {
-    const data = axios.patch(`http://localhost:8080/api/v1.0/Renta/clientes/${cedula}`, body).then(r => r.data);
-    console.log(data)
+const buscarCedula = async (cedula) =>{
+    //http://localhost:8080/api/v1.0/Renta/clientes/123
+    return axios.get("http://localhost:8080/api/v1.0/Renta/clientes/"+cedula).then(r => r.data);
+}
+const actualizarCliente = async (body) => {
+    return axios.put("http://localhost:8080/api/v1.0/Renta/clientes", body).then(r => r.data);
 
 }
 
 export const insertarFachada = async (body) => {
-    await insertarCliente(body);
+
+    return await insertarCliente(body);
+}
+export const buscarFachada = async (cedula) =>{
+    return await buscarCedula(cedula);
 }
 
-export const actualizarFachadaCliente = async (id, body) => {
-    return await actualizarCliente(id, body);
+export const actualizarFachadaCliente = async (body) => {
+    return await actualizarCliente(body);
 }
