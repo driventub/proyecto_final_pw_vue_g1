@@ -1,10 +1,9 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
+
+
 const routes = [
-    // {
-    //     path: '/actualizar',
-    //     component: EstudiantesActualizar
-    // },
+
 
     {
          path: '/clientes/buscarVehiculos',
@@ -20,12 +19,46 @@ const routes = [
         component: ()=> import ('@/pages/ReportePage.vue')
     },
    
-
+    {
   
+        path: '/empleados/administrarCliente',
+        component: ( )=> import ('../components/FormularioCliente.vue')
+    },
+    {
+        path: '/empleados/administrarVehiculo',
+        component: ( )=> import ('../components/FormularioVehiculo.vue')
+    },
+
+
+    {
+        path:'/clientes/registrarCliente',
+        component: () => import('../pages/ClienteRegistrarPage.vue')
+    },
+    {
+        path:'/clientes/actualizarCliente',
+        component: () => import('../pages/ClienteActualizarPage.vue')
+    },
+    {
+        path:'/empleados/registrarCliente',
+        component: () => import('../pages/ClienteRegistrarPageEmpleado.vue')
+    },
+    {
+        path:'/empleados/ingresarVehiculo',
+        component: () => import('../pages/VehiculoRegistrarPage.vue')
+    },
+    {
+        path: '/clientes/reservarVehiculos',
+        component: () => import ('@/pages/VehiculoReservar2.vue')
+    },
+
+    {
+        path: '/empleados/retirarReservado',
+        component: () => import ('@/pages/RetirarVehiculo.vue')
+    },
     
 ]
 
 
-const router = createRouter({history: createWebHashHistory(), routes})
+const router = createRouter({ history: createWebHashHistory(), routes })
 
 export default router

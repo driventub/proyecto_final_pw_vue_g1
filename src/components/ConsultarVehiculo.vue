@@ -1,6 +1,6 @@
 <template>
-  
-  <div class="container">
+
+    <div class="container">
 
         <h1>Buscar Vehiculos Disponibles</h1>
         <div class="form-consultar">
@@ -15,29 +15,30 @@
         </div>
 
         <div>
-            
+
 
         </div>
 
-  </div>
+    </div>
 </template>
 
 <script>
-import {consultarFachada} from '../helpers/clienteVehiculo'
+import { consultarFachada } from '../helpers/clienteEmpleados';
+
 export default {
 
-    data(){
-        return{
-            marca:null,
-            modelo:null,
-            vehiculo:null
+    data() {
+        return {
+            marca: null,
+            modelo: null,
+            vehiculo: null
         }
     },
 
-    methods:{
+    methods: {
 
-        async buscarVeiculo(){
-            const vehiMarca= this.marca;
+        async buscarVeiculo() {
+            const vehiMarca = this.marca;
             const modelo = this.modelo
 
             const vehiculosRetornados =   await consultarFachada(vehiMarca, modelo);
@@ -52,6 +53,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
