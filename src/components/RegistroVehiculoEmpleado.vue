@@ -37,7 +37,7 @@
             </select>
         </div>
         <div class="input-group flex-nowrap">
-            <span class="input-group-text" style="width: 215px;" required >Cilindraje: {{vehiculo.cilindraje}}</span>
+            <span class="input-group-text" style="min-width: 120px;" required >Cilindraje: {{vehiculo.cilindraje}}</span>
             <input v-model="vehiculo.cilindraje" type="range" min="1" max="5.2" step="0.3" class="form-range" id="cilindraje" style="margin: 12px  10px;">
         </div>
         <div >
