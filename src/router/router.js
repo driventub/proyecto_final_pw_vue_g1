@@ -13,6 +13,10 @@ const routes = [
         path:'/empleados/registrarCliente',
         component: () => import('../pages/ClienteRegistrarPageEmpleado.vue')
     },
+    {
+        path:'/empleados/ingresarVehiculo',
+        component: () => import('../pages/VehiculoRegistrarPage.vue')
+    },
     // {
     //     path: '/actualizar',
     //     component: EstudiantesActualizar
