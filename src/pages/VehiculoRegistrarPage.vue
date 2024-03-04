@@ -1,5 +1,5 @@
 <template>
-<div class="contenedor">
+<div>
    <RegistroVehiculoEmpleado/> 
 </div>
   
