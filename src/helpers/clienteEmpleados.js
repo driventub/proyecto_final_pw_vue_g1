@@ -29,6 +29,8 @@ const registrarRetiroAxios=async(numero)=>{
     return data
 }
 
+
+
 export const verVehiculos = async () => {
     
     const response = await axios.get("http://localhost:8080/api/v1.0/Renta/vehiculos/buscarTodos");
@@ -67,4 +69,16 @@ const actualizarVehiculoId = (id, body) => {
 
 export const actualizarFachadaVehiculoId = async (id, body) => {
     return await actualizarVehiculoId(id, body);
+}
+
+
+
+const consultar = async (marca, modelo)=>{
+    const data = axios.get(`http://localhost:8080/api/v1.0/Renta/vehiculos?marca=${marca}&modelo=${modelo}`).then(r=>r.data);
+    console.log(data);
+    return data;
+}
+
+export const consultarFachada=  async (marca, modelo)=>{
+    return await consultar(marca, modelo)
 }

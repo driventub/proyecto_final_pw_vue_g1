@@ -1,10 +1,10 @@
 <template>
     <div>
         <h2>Lista de Clientes</h2>
-        <div>
+        <div style="margin: 20px;">
             <label class="form-label" for="apellido">Buscar por Apellido:</label>
             <input class="form-control" type="text" id="apellido" v-model="apellidoBuscado">
-            <button class="btn btn-primary" @click="buscarClientes">Buscar</button>
+            
         </div>
         <table v-if="clientesMostrados.length" class="table table-striped">
             <thead>

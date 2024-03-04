@@ -1,10 +1,9 @@
 <template>
     <div>
         <h2>Lista de Vehículos</h2>
-        <div>
+        <div style="margin: 20px;">
             <label class="form-label" for="placa">Buscar por Placa:</label>
             <input class="form-control" type="text" id="placa" v-model="placaBuscada">
-            <button class="btn btn-primary" @click="buscarVehiculos">Buscar</button>
         </div>
         <table v-if="vehiculosMostrados.length" class="table table-striped table-sortable">
             <thead>

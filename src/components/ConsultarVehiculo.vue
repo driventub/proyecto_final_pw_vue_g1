@@ -5,11 +5,11 @@
         <h1>Buscar Vehiculos Disponibles</h1>
         <div class="form-consultar">
             <p>Marca de Vehiculo</p>
-            <input type="text">
+            <input v-model="marca" type="text">
             <br>
             <p>Modelo de Vehiculo</p>
-            <input type="text">
-
+            <input v-model="modelo" type="text">
+            <br>
             <button @click="buscarVeiculo">Buscar</button>
 
         </div>
@@ -41,11 +41,14 @@ export default {
             const vehiMarca = this.marca;
             const modelo = this.modelo
 
-            const vehiculoRetornado = await consultarFachada(vehiMarca, modelo);
-            this.vehiculo = vehiculoRetornado;
-            console.log(vehiculoRetornado);
+            const vehiculosRetornados =   await consultarFachada(vehiMarca, modelo);
+            this.vehiculo = vehiculosRetornados;
+            console.log(vehiculosRetornados);
+            this.$emit('listaVehiculos', vehiculosRetornados);
+
         }
     }
+
 
 }
 </script>
