@@ -1,13 +1,7 @@
 <template>
   <div class="contenedor">
     <div class="titulo">
-        <legend>ÚNASE A AVIS PREFERRED®</legend>
-        <spam>Configuremos su cuenta personal.</spam>
-    </div>
-    <div class="hypervinculos">
-        <div><a href="">¿YA TIENE UN NÚMERO DE WIZARD DE AVIS DE 6 DÍGITOS? START HERE.</a></div>
-        
-        <div><a href="">¿Qué es un número de Wizard?</a></div>
+        <h1>Registro</h1>
     </div>
     <form class="formulario" @submit.prevent="registrarCliente">
         <div class="mb-3">

@@ -25,3 +25,23 @@ export const buscarFachada = async (cedula) =>{
 export const actualizarFachadaCliente = async (body) => {
     return await actualizarCliente(body);
 }
+
+
+const reservarVehiculoLogic = async (reserva) => {
+    try {
+        const response = await axios.post("http://localhost:8080/api/v1.0/Renta/vehiculos/reserva", reserva);
+        return response.data;
+    } catch (error) {
+        console.error("Error al reservar vehículo:", error);
+        throw error; 
+    }
+};
+
+export const reservarVehiculoFachada = async (reserva) => {
+    try {
+        return await reservarVehiculoLogic(reserva);
+    } catch (error) {
+        console.error("Error al reservar vehículo:", error);
+        throw error; 
+    }
+};
