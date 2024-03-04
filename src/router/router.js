@@ -12,14 +12,36 @@ const routes = [
 
     {
         path: '/clientes/buscarEmpleados',
-        component: FormularioCliente
+        component: ( )=> import ('../components/FormularioCliente.vue')
     },
     {
         path: '/clientes/buscarVehiculos',
-        component: FormularioVehiculo
+        component: ( )=> import ('../components/FormularioVehiculo.vue')
     },
 
 
+    {
+        path:'/clientes/registrarCliente',
+        component: () => import('../pages/ClienteRegistrarPage.vue')
+    },
+    {
+        path:'/clientes/actualizarCliente',
+        component: () => import('../pages/ClienteActualizarPage.vue')
+    },
+    {
+        path:'/empleados/registrarCliente',
+        component: () => import('../pages/ClienteRegistrarPageEmpleado.vue')
+    },
+    {
+        path: '/clientes/reservarVehiculos',
+        component: () => import ('@/pages/VehiculoReservar2.vue')
+    },
+
+    {
+        path: '/empleados/retirarReservado',
+        component: () => import ('@/pages/RetirarVehiculo.vue')
+    },
+    
 ]
 
 

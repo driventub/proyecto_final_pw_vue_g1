@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { consultarFachada } from '@/helpers/clienteVehiculo';
+import { consultarFachada } from '../helpers/clienteEmpleados';
 
 export default {
 
