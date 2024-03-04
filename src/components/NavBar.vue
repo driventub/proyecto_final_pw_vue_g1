@@ -29,6 +29,7 @@
             </router-link>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><router-link class="dropdown-item" to="/clientes/buscarVehiculos">Buscar Vehiculos Disponibles</router-link></li>
+              <li><router-link class="dropdown-item" to="/clientes/buscarEmpleados">Buscar Empleados</router-link></li>
               <li><router-link class="dropdown-item" to="/clientes/reservarVehiculos">Reservar Vehiculo</router-link></li>
               <li><router-link class="dropdown-item" to="/clientes/registrarCliente">Registrarse como cliente</router-link></li>
               <li><router-link class="dropdown-item" to="/clientes/actualizarCliente">Actualizar sus datos de cliente</router-link></li>
