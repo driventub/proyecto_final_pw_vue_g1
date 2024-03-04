@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import { actualizarFachadaVehiculoId } from "@/helpers/ClienteVehiculo";
+import { actualizarFachadaVehiculoId } from "@/helpers/clienteEmpleados";
 
 export default {
     data() {

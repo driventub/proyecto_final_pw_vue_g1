@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { verVehiculoFachada, eliminarVehiculo, buscarVehiculoPorPlaca } from "@/helpers/ClienteVehiculo";
+import { verVehiculoFachada, eliminarVehiculo, buscarVehiculoPorPlaca } from "@/helpers/clienteEmpleados";
 import ActualizarVehiculo from "@/components/ActualizarVehiculo.vue"
 
 
