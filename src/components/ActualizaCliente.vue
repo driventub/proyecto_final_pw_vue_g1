@@ -43,7 +43,7 @@
                     <button type="submit" class="btn btn-primary">Actualizar</button>
                 </fieldset>
             </form>
-            <button @click="regresar()" class="btn btn-secodary">¿No es usted?</button>
+            <button @click="regresar()" class="btn">¿No es usted?</button>
         </div>
     </div>
 </template>
@@ -78,7 +78,8 @@ export default {
         async actualizarCliente() {
             this.cliente.fechaNacimiento = new Date(this.cliente.fechaNacimiento);
             const msj = await actualizarFachadaCliente(this.cliente);
-            alert(msj)    
+            alert(msj)
+            this.show = true;    
         },
         regresar(){
             this.show = true;

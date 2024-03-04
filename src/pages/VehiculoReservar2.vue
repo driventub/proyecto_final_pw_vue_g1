@@ -1,44 +1,45 @@
 <template>
     <div>
-        <div id="divpag">
-            <fieldset>
+        <div class="contenedor">
+            <form @submit.prevent="buscar">
                 <legend>Reservar vehículo</legend>
-                <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="idPlaca">Placa del vehículo:
-                    </span>
-                    <input type="text" class="form-control" aria-describedby="addon-wrapping" v-model="placa" />
+                <div class="mb-3">
+                    <label for="placa" class="form-label" id="idPlaca">Placa del vehículo:</label>
+                    <input id="placa" type="text" class="form-control" aria-describedby="addon-wrapping" v-model="placa" required/>
                 </div>
-                <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="idCedula">Cédula:</span>
-                    <input type="text" class="form-control" aria-describedby="addon-wrapping" v-model="cedula" />
+                <div class="mb-3">
+                    <label for="cedula" class="form-label" id="idCedula">Cédula:</label>
+                    <input id="cedula" type="text" class="form-control" aria-describedby="addon-wrapping" v-model="cedula" required/>
                 </div>
-                <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="idFechaI">Fecha inicio:</span>
-                    <input type="datetime-local" class="form-control" aria-describedby="addon-wrapping"
-                        v-model="fechaInicio" />
+                <div class="mb-3">
+                    <label for="fechaI" class="form-label" id="idFechaI">Fecha inicio:</label>
+                    <input id="fechaI" type="datetime-local" class="form-control" aria-describedby="addon-wrapping"
+                        v-model="fechaInicio" required/>
                 </div>
-                <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="idFechaF">Fecha final:</span>
-                    <input type="datetime-local" class="form-control" aria-describedby="addon-wrapping"
-                        v-model="fechaFinal" />
+                <div class="mb-3">
+                    <label for="fechaf" class="form-label" id="idFechaF">Fecha final:</label>
+                    <input id="fechaf" type="datetime-local" class="form-control" aria-describedby="addon-wrapping"
+                        v-model="fechaFinal" required/>
                 </div>
-            </fieldset>
+                <button v-if="show" type="submit" class="btn btn-primary">BUSCAR</button>
+            </form>
             <br />
-            <button @click="buscar" class="btn btn-outline-info">BUSCAR</button>
+            
             <div v-if="mostrarD" class="alert alert-primary" role="alert">
                 {{ texto }}
             </div>
 
-            <div v-if="mostrarT" class="input-group flex-nowrap">
-                <span class="input-group-text" id="idTarjeta">Tarjeta de credito:</span>
-                <input type="text" class="form-control" aria-describedby="addon-wrapping" v-model="tarjeta" />
+            <div v-if="mostrarT" class="mb-3">
+                <label for="tarjeta" class="form-label" id="idTarjeta">Tarjeta de credito:</label>
+                <input id="tarjeta" type="text" class="form-control" aria-describedby="addon-wrapping" v-model="tarjeta" />
             </div>
             <br />
 
-            <button @click="reservar" class="btn btn-outline-info">RESERVAR</button>
+            <button v-if="!show" @click="reservar" class="btn btn-primary" style="margin: 10px;">Reservar</button>
             <div v-if="mostrarR" class="alert alert-primary" role="alert">
                 {{ texto2 }}
             </div>
+            <button v-if="otro" @click="resetear()" class="btn">¿Reservar otro Vehículo?</button>
         </div>
     </div>
 </template>
@@ -61,25 +62,28 @@ export default {
             mostrarR: false,
             texto: null,
             texto2: null,
-            mostrarT: null
+            mostrarT: null,
+            show:true,
+            otro:false
         };
     },
     methods: {
         async buscar() {
-            this.texto = await busquedaVehiculoFecha(
-                this.placa,
-                this.fechaInicio,
-                this.fechaFinal
-            );
-            if (this.texto.includes('no está disponible')) {
-                this.mostrarD = true;
-
-                this.mostrarR = false;
-            } else {
-                this.mostrarD = true;
-                this.mostrarT = true;
-                this.mostrarR = false;
+            this.texto = await busquedaVehiculoFecha(this.placa,this.fechaInicio,this.fechaFinal);
+            console.log(this.texto);
+            this.mostrarD = true;
+            if(this.texto!=""){
+                if (this.texto.includes('no está disponible')) {
+                    this.mostrarR = false;
+                } else {
+                    this.show = false;
+                    this.mostrarT = true;
+                    this.mostrarR = false;
+                }
+            }else{
+                this.texto = "No se ecuenta la placa del Vehículo.\nIntente con otra...."
             }
+            
 
         },
         async reservar() {
@@ -94,30 +98,29 @@ export default {
             console.log(this.fechaFinal);
             this.texto2 = await reservarVehiculo(reser);
             this.mostrarR = true;
-            this.mostrarD = false;
+            if(this.texto2.includes('Vehiculo reservado correctamente')){
+                this.otro = true;
+            }
+            
         },
+        resetear(){
+            this.placa= null;
+            this.cedula= null;
+            this.fechaInicio= null;
+            this.fechaFinal= null;
+            this.tarjeta= null;
+            this.mostrarD= false;
+            this.mostrarR= false;
+            this.texto= null;
+            this.texto2= null;
+            this.mostrarT= null;
+            this.show=true;
+            this.otro=false;
+        }
     },
 };
 </script>
 
 <style>
-#divpag {
-    height: fit-content;
-    width: fit-content;
-    margin: auto;
-    text-align: center;
-}
 
-input {
-    margin-right: 10px;
-    margin-top: 10px;
-}
-
-span {
-    margin-top: 10px;
-}
-
-button {
-    margin: 10px;
-}
 </style>
