@@ -1,7 +1,7 @@
 <template>
-  <div class="contenedor">
+  <div class="contenedor" id="formCliente">
     <div class="titulo">
-        <h2>Ingresar un Cliente.</h2>
+        <h2>Ingresar un Cliente</h2>
     </div>
     <form class="formulario" @submit.prevent="registrarCliente">
         <div class="input-group flex-nowrap">
@@ -63,11 +63,10 @@ export default {
 </script>
 
 <style scoped>
-#divpag {
-    height: fit-content;
-    width: fit-content;
-    margin: auto;
-    text-align: center;
+
+
+h2{
+    font-size: 1rem;
 }
 
 input {
@@ -81,6 +80,15 @@ span {
 
 button {
     margin: 10px;
+}
+@media screen and (min-width: 900px) {
+    #formCliente{
+        min-width: 70vw;
+        max-width: 70%;
+    }
+    h2{
+        font-size: 1.5rem;
+    }
 }
 
 </style>

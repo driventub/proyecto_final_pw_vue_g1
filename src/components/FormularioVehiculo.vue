@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="contenedor">
         <h2>Lista de Vehículos</h2>
         <div style="margin: 20px;">
             <label class="form-label" for="placa">Buscar por Placa:</label>

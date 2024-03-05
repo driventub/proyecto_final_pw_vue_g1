@@ -1,12 +1,12 @@
 <template>
-    <div>
+    <div class="contenedor" id="formCliente">
         <h2>Lista de Clientes</h2>
         <div style="margin: 20px;">
             <label class="form-label" for="apellido">Buscar por Apellido:</label>
             <input class="form-control" type="text" id="apellido" v-model="apellidoBuscado">
             
         </div>
-        <table v-if="clientesMostrados.length" class="table table-striped">
+        <table v-if="clientesMostrados.length" class="table table-striped" id="tabla_cliente">
             <thead>
                 <tr class="table-dark">
                     <th>Cédula</th>
@@ -108,5 +108,13 @@ export default {
             this.clienteObjeto = null;
         }
     }
+    
 };
+
 </script>
+<style>
+#formCliente{
+    width: 100%;
+}
+
+</style>

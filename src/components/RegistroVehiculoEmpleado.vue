@@ -94,11 +94,11 @@ export default {
 </script>
 
 <style scoped>
-#divpag {
-    height: fit-content;
-    width: fit-content;
-    margin: auto;
-    text-align: center;
+@media screen and (min-width: 900px) {
+    #formCliente{
+        min-width: 70vw;
+        max-width: 70%;
+    }
 }
 .input-group flex-nowrap{
     margin-top:10px ;
