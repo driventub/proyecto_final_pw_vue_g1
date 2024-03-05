@@ -1,16 +1,17 @@
 <template>
-  <div class="contenedor">
+  <div class="contenedor" id="ventana">
 
     <div id="divpag">
-      <form>
+      <form class="formulario" @submit.prevent="buscar()">
         <legend>Retirar vehículo</legend>
         <div class="input-group flex-nowrap">
           <span class="input-group-text" id="idNum">Número de reserva: </span>
-          <input type="text" class="form-control" aria-describedby="addon-wrapping" v-model="numero" />
+          <input type="number" class="form-control" aria-describedby="addon-wrapping" v-model="numero" required/>
         </div>
+        <button type="submit" class="btn btn-primary" style="margin: 10px;">BUSCAR</button>
       </form>
-      <div>
-        <button @click="buscar" class="btn btn-primary" style="margin-top: 10px;">BUSCAR</button>
+      <div v-if="show" class="alert alert-primary" role="alert">
+        {{txtnot}}
       </div>
       <div v-if="mostrarB">
         <table class="table">
@@ -18,9 +19,9 @@
             <tr>
               <th scope="col"></th>
               <th scope="col">Placa</th>
-              <th scope="col">Modelo</th>
+              <th class="d-none d-md-table-cell" scope="col">Modelo</th>
               <th scope="col">Estado</th>
-              <th scope="col">Fecha </th>
+              <th class="d-none d-lg-table-cell" scope="col">Fecha </th>
               <th scope="col">Reservado por</th>
             </tr>
           </thead>
@@ -28,19 +29,20 @@
             <tr>
               <th scope="row">Vehículo</th>
               <td class="table-info">{{ placa }}</td>
-              <td class="table-info">{{ modelo }}</td>
+              <td  class="d-none d-md-table-cell">{{ modelo }}</td>
               <td class="table-info">{{ estado }}</td>
-              <td class="table-info">{{ fecha }}</td>
+              <td class="d-none d-lg-table-cell">{{ fecha }}</td>
               <td class="table-info">{{ reservado }}</td>
             </tr>
           </tbody>
         </table>
-      </div>
-      <div>
-        <button v-if="mostrarButon" @click="registrar" class="btn btn-outline-info">REGISTRAR RETIRO</button>
-      </div>
-      <div v-if="mostrarR" class="alert alert-primary" role="alert">
-        {{ texto }}
+      
+        <div>
+          <button @click="registrar" class="btn btn-primary" style="margin: 10px;">REGISTRAR RETIRO</button>
+        </div>
+        <div v-if="mostrarR" class="alert alert-primary" role="alert">
+          {{ texto }}
+        </div>
       </div>
     </div>
   </div>
@@ -66,8 +68,9 @@ export default {
       mostrarB: false,
       mostrarR: false,
       mostrarButon: false,
-
-      texto: null
+      show:false,
+      texto: null,
+      txtnot:""
 
     };
 
@@ -80,13 +83,17 @@ export default {
       this.estado = data.estado;
       this.fecha = data.fecha;
       this.reservado = data.ciCliente;
-      this.mostrarB = true;
+      
       this.mostrarR = false;
       console.log(this.placa);
       if (this.estado === "ND" || data.placa ==null) {
-        this.mostrarButon = false
+        this.txtnot='No se encontró una reserva disponible. Intente con otra...';
+        this.show=true;
+        this.mostrarB=false;
       } else {
-        this.mostrarButon = true
+        this.show=false;
+        this.mostrarB = true;
+        
       }
     },
     async registrar() {
@@ -99,4 +106,20 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+.contenedor {
+  width: 500px;
+}
+h2 {
+  font-size: 1.2rem;
+}
+@media screen and (min-width: 910px) {
+  #ventana {
+    min-width: 70vw;
+    max-width: 70%;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+}
+</style>
