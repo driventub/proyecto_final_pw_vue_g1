@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="contenedor">
+        <div class="contenedor" id="ventana">
             <form @submit.prevent="buscar">
                 <legend>Reservar vehículo</legend>
                 <div class="mb-3">
@@ -121,6 +121,17 @@ export default {
 };
 </script>
 
-<style>
-
+<style scoped >
+.contenedor{
+    width: 70vw;
+}
+@media screen and (min-width: 900px) {
+    #ventana{
+        min-width: 70vw;
+        max-width: 70%;
+    }
+    h2{
+        font-size: 2rem;
+    }
+}
 </style>

@@ -1,16 +1,16 @@
 <template>
-  <div>
+  <div class="contenedor">
 
     <div id="divpag">
-      <fieldset>
+      <form>
         <legend>Retirar vehículo</legend>
         <div class="input-group flex-nowrap">
           <span class="input-group-text" id="idNum">Número de reserva: </span>
           <input type="text" class="form-control" aria-describedby="addon-wrapping" v-model="numero" />
         </div>
-      </fieldset>
+      </form>
       <div>
-        <button @click="buscar" class="btn btn-outline-info">BUSCAR</button>
+        <button @click="buscar" class="btn btn-primary" style="margin-top: 10px;">BUSCAR</button>
       </div>
       <div v-if="mostrarB">
         <table class="table">

@@ -98,7 +98,7 @@ export default {
 
 <style scoped>
 h2{
-        font-size: 1.3rem;
+    font-size: 1.3rem;
 }
 .input-group flex-nowrap{
     margin-top:10px ;
