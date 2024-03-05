@@ -55,7 +55,6 @@
             v-model="propsClientes.tarjetaCredito"
             type="text"
             id="tarjetaCredito"
-            required
           />
         </div>
 
@@ -121,7 +120,7 @@ export default {
       console.log(body);
 
       await actualizarFachadaClienteId(this.propsClientes.cedula, body);
-      alert("Datos del vehículo actualizados correctamente");
+      alert("Datos del Cliente actualizados correctamente");
       window.location.reload();
     },
   },

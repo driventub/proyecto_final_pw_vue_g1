@@ -18,7 +18,7 @@
             </div>
             <div class="mb-3">
                 <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
-                <input v-model="cliente.fechaNacimiento" type="date" class="form-control" id="fechaNacimiento">
+                <input v-model="cliente.fechaNacimiento" type="date" class="form-control" id="fechaNacimiento" required>
             </div>
             <div class="mb-3">
                 <label for="genero" class="form-label">Genero</label>
@@ -53,26 +53,18 @@ export default {
         async registrarCliente() {
             try {
                 this.cliente.fechaNacimiento = new Date(this.cliente.fechaNacimiento);
-                const { status, msg } = await insertarFachada(this.cliente);
-                console.log(msg);
-                if (status === 200) {
-                    alert("Cliente registrado correctamente!");
-                    this.cliente.cedula = null;
-                    this.cliente.nombre = null;
-                    this.cliente.apellido = null;
-                    this.cliente.fechaNacimiento = null;
-                    this.cliente.genero = null;
-
-                } else if (status === 404) {
-                    alert("Cliente no encontrado.");
-                } else {
-                    alert("Ocurrió un error: " + msg);
-                }
+                const response = await insertarFachada(this.cliente);
+                console.log(response);
+                this.cliente.cedula = null;
+                this.cliente.nombre = null;
+                this.cliente.apellido = null;
+                this.cliente.fechaNacimiento = null;
+                this.cliente.genero = null;
+                alert(response);
             } catch (error) {
-                console.error("Error interno:", error);
-
+                alert("La cédula ingresada ya se encuentra ingresada en la sistema");
             }
-        }
+        },
     }
 
 

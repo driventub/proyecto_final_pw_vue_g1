@@ -71,18 +71,10 @@
           required
         />
       </div>
-
-      <div>
-        <label class="form-label" for="cilindraje">Cilindraje:</label>
-        <input
-          class="form-control"
-          v-model="porpsObjeto.cilindraje"
-          type="number"
-          id="cilindraje"
-          required
-        />
-      </div>
-
+        <div class="input-group flex-nowrap">
+            <span class="input-group-text" style="min-width: 120px;" required >Cilindraje: {{vehiculo.cilindraje}}</span>
+            <input v-model="vehiculo.cilindraje" type="range" min="1" max="5.2" step="0.3" class="form-range" id="cilindraje" style="margin: 12px  10px;">
+        </div>
       <div>
         <label class="form-label" for="precioVehiculo"
           >Precio del Vehículo:</label
@@ -168,6 +160,9 @@ export default {
 }
 h2{
     font-size: 1.2rem;
+}
+span {
+    margin-top: 10px;
 }
 @media screen and (min-width: 900px) {
     #ventana{

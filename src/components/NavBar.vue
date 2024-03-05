@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
       <div class="container-fluid">
-        <router-link class="navbar-brand" to="#">Rent a Car</router-link>
+        <router-link class="navbar-brand" to="/">Rent a Car</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
           aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -51,12 +51,6 @@
         </div>
       </div>
     </nav>
- 
-    <footer class="footer mt-5 py-3 bg-light">
-      <div class="container text-left">
-        <span class="text-muted">Derechos Reservados &copy; {{ new Date().getFullYear() }}</span>
-      </div>
-    </footer>
   </div>
 </template>
  
@@ -67,14 +61,4 @@ export default {
 </script>
  
 <style scoped>
- 
-.footer {
-  position: fixed;
-  bottom: 20px;
-  width: 50%;
-  height: 20px;
-  background-color: #f8f9fa;
-  text-align: left;
-  padding-left: 20px;
-}
 </style>

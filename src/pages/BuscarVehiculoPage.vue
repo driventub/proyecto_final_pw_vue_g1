@@ -1,6 +1,6 @@
 <template>
   
-    <div>
+    <div class="contenedor">
             <FormConsultarvehiculo @listaVehiculos="listarVehiculos" />
             <div v-if="vehiculos != null">
                 <TablaVehiculo :listaVehiculos="vehiculos" />

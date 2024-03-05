@@ -1,6 +1,5 @@
 <template>
-    <div class="contenedor">
-
+    <div>
         <div>
             <h1>Lista de Vehiculos</h1>
             <table class="table table-striped">

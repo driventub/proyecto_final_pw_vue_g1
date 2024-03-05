@@ -3,7 +3,11 @@
   <div id="page">
     <router-view></router-view>
   </div>
-  
+  <footer>
+    <div class="container text-left">
+      <span class="text-muted">Derechos Reservados &copy; {{ new Date().getFullYear() }}</span>
+    </div>
+  </footer>
 </template>
 
 <script>
@@ -51,5 +55,15 @@ body{
   padding: 15px;
   border-radius: 32px;
   box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.329);
+}
+
+footer {
+  position: fixed;
+  margin-top: 40px;
+  bottom: 0px;
+  width: auto;
+  background-color: white;
+  text-align: left;
+  padding: 0;
 }
 </style>

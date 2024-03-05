@@ -1,20 +1,18 @@
 <template>
 
-    <div class="contenedor">
-        <div>
+    <div>
+        <form @submit.prevent="buscarVeiculo">
             <h2>Buscar Vehiculos Disponibles</h2>
-                <div class="form-consultar">
-                    <p>Marca de Vehiculo</p>
-                    <input class="form-control" v-model="marca" type="text">
-                    <br>
-                    <p>Modelo de Vehiculo</p>
-                    <input class="form-control" v-model="modelo" type="text">
-                    <br>
-                    <button class="btn btn-primary" @click="buscarVeiculo">Buscar</button>
-
-                </div>
-
-        </div>
+            <div class="mb-3" >
+                <label for="marca" class="form-label">Marca de Vehiculo</label>
+                <input class="form-control" v-model="marca" type="text" required id="marca">
+            </div>
+            <div class="mb-3" >
+                <label for="modelo" class="form-label">Modelo de Vehiculo</label>
+                <input class="form-control" v-model="modelo" type="text" required id="modelo">
+            </div>
+            <button class="btn btn-primary" type="submit">Buscar</button>
+        </form>
         
 
     </div>
