@@ -1,5 +1,5 @@
 <template>
-  <div class="contenedor">
+  <div class="contenedor" id="ventana">
     <div class="titulo">
         <h2>Ingresar un Vehículo.</h2>
     </div>
@@ -97,11 +97,8 @@ export default {
 </script>
 
 <style scoped>
-@media screen and (min-width: 900px) {
-    #formCliente{
-        min-width: 70vw;
-        max-width: 70%;
-    }
+h2{
+        font-size: 1.3rem;
 }
 .input-group flex-nowrap{
     margin-top:10px ;
@@ -120,4 +117,13 @@ button {
     margin: 10px;
 }
 
+@media screen and (min-width: 900px) {
+    #ventana{
+        min-width: 70vw;
+        max-width: 70%;
+    }
+    h2{
+        font-size: 2rem;
+    }
+}
 </style>

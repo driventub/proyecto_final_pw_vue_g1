@@ -1,5 +1,5 @@
 <template>
-  <div class="contenedor" id="formCliente">
+  <div class="contenedor" id="ventana">
     <div class="titulo">
         <h2>Ingresar un Cliente</h2>
     </div>
@@ -87,7 +87,7 @@ button {
     margin: 10px;
 }
 @media screen and (min-width: 900px) {
-    #formCliente{
+    #ventana{
         min-width: 70vw;
         max-width: 70%;
     }

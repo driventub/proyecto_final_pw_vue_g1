@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="contenedor">
         <div v-if="showDatosVehiculo">
             <h2>Lista de Vehículos</h2>
             <div class="row justify-content-center">
@@ -155,8 +155,4 @@ div {
     text-align: center;
 }
 
-.container {
-    width: 100%;
-    max-width: 1500px;
-}
 </style>

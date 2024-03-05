@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="contenedor">
         <div v-if="showDatosCliente">
             <h2>Lista de Clientes</h2>
             <div class="row justify-content-center">
@@ -133,10 +133,5 @@ div {
 .btn-danger {
     padding-right: 20px;
     text-align: center;
-}
-
-.container {
-    width: 100%;
-    max-width: 1500px;
 }
 </style>

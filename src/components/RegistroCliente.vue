@@ -1,5 +1,5 @@
 <template>
-    <div class="contenedor">
+    <div class="contenedor" id="ventana">
         <div class="titulo">
             <h1>Registro</h1>
         </div>
@@ -74,4 +74,22 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.contenedor{
+    width: 70vw;
+}
+h2{
+    font-size: 2rem;
+}
+
+@media screen and (min-width: 900px) {
+    #ventana{
+        min-width: 70vw;
+        max-width: 70%;
+    }
+    h2{
+        font-size: 1.5rem;
+    }
+}
+
+</style>
