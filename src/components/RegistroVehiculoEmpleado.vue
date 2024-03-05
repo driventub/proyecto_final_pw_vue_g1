@@ -46,7 +46,7 @@
                 <span class="input-group-text" >Avalúo</span>
                 <span class="input-group-text">$</span>
                 <input v-model="vehiculo.precioVehiculo" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="precio" required>
-                <span class="input-group-text">.00</span>
+                
             </div>
         </div>
         <div class="input-group flex-nowrap">
@@ -55,7 +55,7 @@
                 <span class="input-group-text" >Valor por día</span>
                 <span class="input-group-text">$</span>
                 <input v-model="vehiculo.valorDia" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="precio" required>
-                <span class="input-group-text">.00</span>
+                
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
@@ -85,6 +85,15 @@ export default {
         async registrarVehiculo() {
             try {
                 const response = await insertarFachada(this.vehiculo);
+                this.vehiculo.placa = null;
+                this.vehiculo.modelo = null;
+                this.vehiculo.marca = null;
+                this.vehiculo.anioFablicacion = null;
+                this.vehiculo.paisFabricacion = null;
+                this.vehiculo.cilindraje = null;
+                this.vehiculo.precioVehiculo = null;
+                this.vehiculo.valorDia = null;
+                
                 alert(response)
             } catch (error) {
                 alert("La placa ingresada ya se encuentra ingresada en la sistema");
