@@ -83,9 +83,12 @@ export default {
     },
     methods: {
         async registrarVehiculo() {
-            console.log(this.vehiculo);
-                var msj = await insertarFachada(this.vehiculo); 
-                alert(msj);
+            try {
+                const response = await insertarFachada(this.vehiculo);
+                alert(response)
+            } catch (error) {
+                alert("La placa ingresada ya se encuentra ingresada en la sistema");
+            }
         }
     }
     

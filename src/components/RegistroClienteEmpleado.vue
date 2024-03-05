@@ -27,37 +27,42 @@
                     <option value="femenino">Femenino</option>
                     <option value="otro">Otro</option>
                 </select>
-        </div>
+            </div>
 
 
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
-  </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
 </template>
 
 <script>
 import { insertarFachada } from "@/helpers/clienteCliente";
 export default {
-     data() {
+    data() {
         return {
             cliente: {
-                cedula: null, 
+                cedula: null,
                 nombre: null,
                 apellido: null,
                 fechaNacimiento: null,
                 genero: null,
-                tipoRegistro:"E"
+                tipoRegistro: "E"
             }
         };
     },
     methods: {
         async registrarCliente() {
-            this.cliente.fechaNacimiento = new Date(this.cliente.fechaNacimiento);
-                var msj = await insertarFachada(this.cliente); 
-                alert(msj);
+            try {
+                this.cliente.fechaNacimiento = new Date(this.cliente.fechaNacimiento);
+                const response = await insertarFachada(this.cliente);
+                console.log(response);
+                alert(response)
+            } catch (error) {
+                alert("La cédula ingresada ya se encuentra ingresada en la sistema");
+            }
         }
     }
-    
+
 
 };
 </script>
