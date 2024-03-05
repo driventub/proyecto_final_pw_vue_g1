@@ -73,12 +73,23 @@ export const actualizarFachadaVehiculoId = async (id, body) => {
 
 
 
-const consultar = async (marca, modelo)=>{
+const consultarCliente = async (marca, modelo)=>{
     const data = axios.get(`http://localhost:8080/api/v1.0/Renta/vehiculos?marca=${marca}&modelo=${modelo}`).then(r=>r.data);
     console.log(data);
     return data;
 }
 
 export const consultarFachada=  async (marca, modelo)=>{
-    return await consultar(marca, modelo)
+    return await consultarCliente(marca, modelo)
+}
+
+
+const consultarVehiculo = async (placa)=>{
+    const data = axios.get(`http://localhost:8080/api/v1.0/Renta/vehiculos/${placa}`).then(r=>r.data);
+    console.log(data);
+    return data;
+}
+
+export const consultarVehiculoFacahada=  async (placa)=>{
+    return await consultarVehiculo(placa)
 }
