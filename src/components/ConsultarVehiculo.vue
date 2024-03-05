@@ -1,23 +1,21 @@
 <template>
 
     <div class="contenedor">
-
-        <h2>Buscar Vehiculos Disponibles</h2>
-        <div class="form-consultar">
-            <p>Marca de Vehiculo</p>
-            <input class="form-control" v-model="marca" type="text">
-            <br>
-            <p>Modelo de Vehiculo</p>
-            <input class="form-control" v-model="modelo" type="text">
-            <br>
-            <button class="btn btn-primary" @click="buscarVeiculo">Buscar</button>
-
-        </div>
-
         <div>
+            <h2>Buscar Vehiculos Disponibles</h2>
+                <div class="form-consultar">
+                    <p>Marca de Vehiculo</p>
+                    <input class="form-control" v-model="marca" type="text">
+                    <br>
+                    <p>Modelo de Vehiculo</p>
+                    <input class="form-control" v-model="modelo" type="text">
+                    <br>
+                    <button class="btn btn-primary" @click="buscarVeiculo">Buscar</button>
 
+                </div>
 
         </div>
+        
 
     </div>
 </template>

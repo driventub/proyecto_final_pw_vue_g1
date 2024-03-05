@@ -1,14 +1,16 @@
 <template>
   
+    <div>
+            <FormConsultarvehiculo @listaVehiculos="listarVehiculos" />
+            <div v-if="vehiculos != null">
+                <TablaVehiculo :listaVehiculos="vehiculos" />
+            </div>
+            <div v-if="mensaje1">
+                <h1>NO SE ENCONTRARON RESULTADOS</h1>
 
-    
-        <FormConsultarvehiculo @listaVehiculos="listarVehiculos" />
-    <div v-if="vehiculos != null">
-        <TablaVehiculo :listaVehiculos="vehiculos" />
     </div>
-    <div v-if="mensaje1">
-        <h1>NO SE ENCONTRARON RESULTADOS</h1>
-
+    
+    
     
 
 
