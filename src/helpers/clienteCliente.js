@@ -79,6 +79,7 @@ const reservarVehiculoLogic = async (reserva) => {
 };
 
 export const reservarVehiculoFachada = async (reserva) => {
+    console.log(reserva);
     try {
         return await reservarVehiculoLogic(reserva);
     } catch (error) {
