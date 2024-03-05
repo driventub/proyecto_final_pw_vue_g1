@@ -1,53 +1,61 @@
 <template>
-    <div>
-        <h2>Lista de Vehículos</h2>
-        <div>
-            <label class="form-label" for="placa">Buscar por Placa:</label>
-            <input class="form-control" type="text" id="placa" v-model="placaBuscada">
-            <button class="btn btn-primary" @click="buscarVehiculos">Buscar</button>
+    <div class="container">
+        <div v-if="showDatosVehiculo">
+            <h2>Lista de Vehículos</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <label class="form-label" for="placa">Buscar por Placa:</label>
+                    <input class="form-control" type="text" id="placa" v-model="placaBuscada">
+                    
+                </div>
+            </div>
+
+
+            <table v-if="vehiculosMostrados.length" class="table table-striped table-sortable">
+                <thead>
+                    <tr class="table-dark">
+                        <th>ID</th>
+                        <th>Placa</th>
+                        <th>Modelo</th>
+                        <th>Marca</th>
+                        <th class="d-none d-sm-table-cell">Año de Fabricación</th>
+                        <th class="d-none d-sm-table-cell">País de Fabricación</th>
+                        <th class="d-none d-md-table-cell">Cilindraje</th>
+                        <th class="d-none d-md-table-cell">Precio</th>
+                        <th class="d-none d-lg-table-cell">Valor por Día</th>
+                        <th class="d-none d-xl-table-cell">Disponible</th>
+                        <th class="d-none d-xl-table-cell">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(vehiculo, index) in vehiculosMostrados" :key="vehiculo.id"
+                        :class="{ 'table-light': index % 10 !== 0 }">
+                        <td >{{ vehiculo.id }}</td>
+                        <td >{{ vehiculo.placa }}</td>
+                        <td >{{ vehiculo.modelo }}</td>
+                        <td >{{ vehiculo.marca }}</td>
+                        <td class="d-none d-sm-table-cell">{{ vehiculo.anioFablicacion }}</td>
+                        <td class="d-none d-sm-table-cell">{{ vehiculo.paisFabricacion }}</td>
+                        <td class="d-none d-md-table-cell">{{ vehiculo.cilindraje }}</td>
+                        <td class="d-none d-md-table-cell">{{ vehiculo.precioVehiculo }}</td>
+                        <td class="d-none d-lg-table-cell">{{ vehiculo.valorDia }}</td>
+                        <td class="d-none d-xl-table-cell">{{ vehiculo.disponible }}</td>
+                        <td class="d-none d-xl-table-cell">
+                            <button class="btn btn-primary"
+                                @click="mostrarFormularioVehiculo(vehiculo)">Actualizar</button>
+                            <button class="btn btn-danger" @click="eliminarVehiculo(vehiculo.id)">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p v-else>No hay vehículos disponibles</p>
         </div>
-        <table v-if="vehiculosMostrados.length" class="table table-striped table-sortable">
-            <thead>
-                <tr class="table-dark">
-                    <th>ID</th>
-                    <th>Placa</th>
-                    <th>Modelo</th>
-                    <th>Marca</th>
-                    <th>Año de Fabricación</th>
-                    <th>País de Fabricación</th>
-                    <th>Cilindraje</th>
-                    <th>Precio</th>
-                    <th>Valor por Día</th>
-                    <th>Disponible</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(vehiculo, index) in vehiculosMostrados" :key="vehiculo.id" :class="{ 'table-light': (index + 1) % 10 === 0 }">
-                    <td>{{ vehiculo.id }}</td>
-                    <td>{{ vehiculo.placa }}</td>
-                    <td>{{ vehiculo.modelo }}</td>
-                    <td>{{ vehiculo.marca }}</td>
-                    <td>{{ vehiculo.anioFablicacion }}</td>
-                    <td>{{ vehiculo.paisFabricacion }}</td>
-                    <td>{{ vehiculo.cilindraje }}</td>
-                    <td>{{ vehiculo.precioVehiculo }}</td>
-                    <td>{{ vehiculo.valorDia }}</td>
-                    <td>{{ vehiculo.disponible }}</td>
-                    <td>
-                        <button class="btn btn-primary" @click="mostrarFormularioVehiculo(vehiculo)">Actualizar</button>
-                        <button class="btn btn-danger" @click="eliminarVehiculo(vehiculo.id)">Eliminar</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <p v-else>No hay vehículos disponibles</p>
-
         <div v-if="showFormularioVehiculo">
-
             <ActualizarVehiculo :porpsObjeto="vehiculoObjeto" @cerrar="cerrarFormularioObjeto" />
         </div>
     </div>
+
 </template>
 
 <script>
@@ -60,16 +68,17 @@ export default {
         ActualizarVehiculo
     },
 
-    
-       
-    
+
+
+
     data() {
         return {
             vehiculos: [],
             placaBuscada: "",
             showFormularioVehiculo: false,
             vehiculoObjeto: null,
-            
+            showDatosVehiculo: true,
+
         };
 
     },
@@ -120,6 +129,7 @@ export default {
 
             };
             this.showFormularioVehiculo = true;
+            this.showDatosVehiculo = false;
         },
         cerrarFormularioCliente() {
             this.showFormularioVehiculo = false;
@@ -128,3 +138,25 @@ export default {
     },
 };
 </script>
+
+<style>
+div {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+
+    margin-right: 20px;
+}
+
+.btn-danger {
+    padding-right: 20px;
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1500px;
+}
+</style>
