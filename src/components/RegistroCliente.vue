@@ -58,6 +58,12 @@ export default {
                 console.log(msg);
                 if (status === 200) {
                     alert("Cliente registrado correctamente!");
+                    this.cliente.cedula = null;
+                    this.cliente.nombre = null;
+                    this.cliente.apellido = null;
+                    this.cliente.fechaNacimiento = null;
+                    this.cliente.genero = null;
+
                 } else if (status === 404) {
                     alert("Cliente no encontrado.");
                 } else {
