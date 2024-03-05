@@ -139,7 +139,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 div {
     margin-top: 20px;
     margin-bottom: 10px;
