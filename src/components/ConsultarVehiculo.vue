@@ -1,16 +1,16 @@
 <template>
 
-    <div class="container">
+    <div class="contenedor">
 
-        <h1>Buscar Vehiculos Disponibles</h1>
+        <h2>Buscar Vehiculos Disponibles</h2>
         <div class="form-consultar">
             <p>Marca de Vehiculo</p>
-            <input v-model="marca" type="text">
+            <input class="form-control" v-model="marca" type="text">
             <br>
             <p>Modelo de Vehiculo</p>
-            <input v-model="modelo" type="text">
+            <input class="form-control" v-model="modelo" type="text">
             <br>
-            <button @click="buscarVeiculo">Buscar</button>
+            <button class="btn btn-primary" @click="buscarVeiculo">Buscar</button>
 
         </div>
 
@@ -53,4 +53,17 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+
+.form-control{
+    
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+h2{
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+</style>

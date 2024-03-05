@@ -1,6 +1,8 @@
 <template>
   
   <div>
+
+    <h2>Retirar vehículo sin reserva</h2>
         <ConsultarVehiculo v-if="ventana1"/>
 
         <button class="btn btn-primary" v-if="ventana1" @click="administrarComponent" >Siguiente</button>
@@ -64,6 +66,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+h2{
+    margin-top: 1.5rem;
+    font-size: 1.8rem;
+    
+}
 
 </style>

@@ -2,13 +2,13 @@
     <div class="contenedor">
         <h1>REPORTE DE RESERVAS</h1>
 
-        <p>Fecha Inicio</p>
-        <input v-model="fechaInicio" type="datetime-local">
+        <label class="form-label">Fecha Inicio</label>
+        <input class="form-control" v-model="fechaInicio" type="datetime-local">
 
-        <p>Fecha Fin</p>
-        <input v-model="fechaFin" type="datetime-local">
+        <label class="form-label">Fecha Fin</label>
+        <input class="form-control" v-model="fechaFin" type="datetime-local">
         <br>
-        <button @click="obtenerReporte">BUSCAR</button>
+        <button class="btn btn-primary" @click="obtenerReporte">BUSCAR</button>
 
         <div v-if="mostrarMensaje2" class="tabla-reporte">
             <table class="table table-striped">

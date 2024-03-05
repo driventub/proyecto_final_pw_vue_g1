@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  
 
     
         <FormConsultarvehiculo @listaVehiculos="listarVehiculos" />
@@ -9,7 +9,6 @@
     <div v-if="mensaje1">
         <h1>NO SE ENCONTRARON RESULTADOS</h1>
 
-    </div>
     
 
 
@@ -47,7 +46,7 @@ export default {
                 this.mensaje1 = false;
             }
         }
-    }
+    },
 
 }
 </script>
