@@ -83,9 +83,12 @@ export default {
     },
     methods: {
         async registrarVehiculo() {
-            console.log(this.vehiculo);
-                var msj = await insertarFachada(this.vehiculo); 
-                alert(msj);
+            try {
+                const response = await insertarFachada(this.vehiculo);
+                alert(response)
+            } catch (error) {
+                alert("La placa ingresada ya se encuentra ingresada en la sistema");
+            }
         }
     }
     
@@ -94,11 +97,11 @@ export default {
 </script>
 
 <style scoped>
-#divpag {
-    height: fit-content;
-    width: fit-content;
-    margin: auto;
-    text-align: center;
+@media screen and (min-width: 900px) {
+    #formCliente{
+        min-width: 70vw;
+        max-width: 70%;
+    }
 }
 .input-group flex-nowrap{
     margin-top:10px ;

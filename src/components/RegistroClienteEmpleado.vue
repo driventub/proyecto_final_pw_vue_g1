@@ -1,7 +1,7 @@
 <template>
-  <div class="contenedor">
+  <div class="contenedor" id="formCliente">
     <div class="titulo">
-        <h2>Ingresar un Cliente.</h2>
+        <h2>Ingresar un Cliente</h2>
     </div>
     <form class="formulario" @submit.prevent="registrarCliente">
         <div class="input-group flex-nowrap">
@@ -27,47 +27,51 @@
                     <option value="femenino">Femenino</option>
                     <option value="otro">Otro</option>
                 </select>
-        </div>
+            </div>
 
 
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
-  </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
 </template>
 
 <script>
 import { insertarFachada } from "@/helpers/clienteCliente";
 export default {
-     data() {
+    data() {
         return {
             cliente: {
-                cedula: null, 
+                cedula: null,
                 nombre: null,
                 apellido: null,
                 fechaNacimiento: null,
                 genero: null,
-                tipoRegistro:"E"
+                tipoRegistro: "E"
             }
         };
     },
     methods: {
         async registrarCliente() {
-            this.cliente.fechaNacimiento = new Date(this.cliente.fechaNacimiento);
-                var msj = await insertarFachada(this.cliente); 
-                alert(msj);
+            try {
+                this.cliente.fechaNacimiento = new Date(this.cliente.fechaNacimiento);
+                const response = await insertarFachada(this.cliente);
+                console.log(response);
+                alert(response)
+            } catch (error) {
+                alert("La cédula ingresada ya se encuentra ingresada en la sistema");
+            }
         }
     }
-    
+
 
 };
 </script>
 
 <style scoped>
-#divpag {
-    height: fit-content;
-    width: fit-content;
-    margin: auto;
-    text-align: center;
+
+
+h2{
+    font-size: 1rem;
 }
 
 input {
@@ -81,6 +85,15 @@ span {
 
 button {
     margin: 10px;
+}
+@media screen and (min-width: 900px) {
+    #formCliente{
+        min-width: 70vw;
+        max-width: 70%;
+    }
+    h2{
+        font-size: 1.5rem;
+    }
 }
 
 </style>
