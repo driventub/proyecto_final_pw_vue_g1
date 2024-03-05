@@ -82,7 +82,8 @@ export default {
       this.reservado = data.ciCliente;
       this.mostrarB = true;
       this.mostrarR = false;
-      if (this.estado === "ND") {
+      console.log(this.placa);
+      if (this.estado === "ND" || data.placa ==null) {
         this.mostrarButon = false
       } else {
         this.mostrarButon = true
