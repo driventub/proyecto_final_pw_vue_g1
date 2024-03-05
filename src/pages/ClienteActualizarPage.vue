@@ -1,7 +1,7 @@
 <template>
-<div class="contenedor">
+<divx>
    <ActualizarCliente/> 
-</div>
+</divx>
   
 </template>
 

@@ -1,21 +1,31 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import ActualizarCliente from "../components/ActualizarClienteEmpleados.vue";
-import FormularioCliente from "../components/FormularioCliente.vue";
-import FormularioVehiculo from "../components/FormularioVehiculo.vue";
+
 
 
 const routes = [
-    // {
-    //     path: '/actualizar',
-    //     component: EstudiantesActualizar
-    // },
+
 
     {
-        path: '/clientes/buscarEmpleados',
+         path: '/clientes/buscarVehiculos',
+         component: ()=> import ('@/pages/BuscarVehiculoPage.vue')
+     },
+
+     {
+        path: '/empleados/retirarSinReserva',
+        component: ()=> import ('@/pages/RetirarVehiSinReservaPage.vue')
+    },
+    {
+        path: '/reportes/reserva',
+        component: ()=> import ('@/pages/ReportePage.vue')
+    },
+   
+    {
+  
+        path: '/empleados/administrarCliente',
         component: ( )=> import ('../components/FormularioCliente.vue')
     },
     {
-        path: '/clientes/buscarVehiculos',
+        path: '/empleados/administrarVehiculo',
         component: ( )=> import ('../components/FormularioVehiculo.vue')
     },
 
@@ -31,6 +41,10 @@ const routes = [
     {
         path:'/empleados/registrarCliente',
         component: () => import('../pages/ClienteRegistrarPageEmpleado.vue')
+    },
+    {
+        path:'/empleados/ingresarVehiculo',
+        component: () => import('../pages/VehiculoRegistrarPage.vue')
     },
     {
         path: '/clientes/reservarVehiculos',

@@ -1,6 +1,9 @@
 <template>
   <NavBar />
-  <router-view></router-view>
+  <div id="page">
+    <router-view></router-view>
+  </div>
+  
 </template>
 
 <script>
@@ -20,7 +23,33 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: rgba(255, 255, 255, 0.77);
+  margin: 0;
+  padding: 0;
+}
+body{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("./assets/fondo.jpg");
 
+}
+#page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.contenedor{
+
+  border-radius: 10px;
+  margin: 10px;
+  padding: 30px;
+
+  background-color: rgb(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 15px;
+  border-radius: 32px;
+  box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.329);
 }
 </style>
