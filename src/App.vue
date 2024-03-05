@@ -2,24 +2,6 @@
   <NavBar />
   <div id="page">
     <router-view></router-view>
-
-    <div>
-        <div>
-          <h1 class="bienvenida">¡Bienvenido a tu viaje de ensueño! Descubre nuestra selección de autos para alquilar.</h1>  
-        </div>
-        
-        <div>
-          <h1 class="leyenda">Renta un auto, haz historia.</h1>
-        </div>
-        <div class="img-portada">
-          <img src="./assets/car.jpg" alt="">
-        </div>
-        
-        
-
-    </div>
-    
-    
   </div>
   
 </template>
@@ -69,30 +51,5 @@ body{
   padding: 15px;
   border-radius: 32px;
   box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.329);
-}
-
-.bienvenida{
-  font-size: 2vmin;
-  text-shadow: 
-    3px 3px 1px rgb(161, 161, 161),
-    2px 2px 2px rgb(245, 245, 245);
-    ;
-}
-@media screen {
-    .bienvenida{
-      font-size: 10vmin;
-    }
-}
-
-
-.img-portada{
-  width: 50%;
-  
-}
-
-
-.img-portada img{
-  padding-top: 2rem;
-  width: 60%;
 }
 </style>
